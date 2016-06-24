@@ -1,0 +1,13 @@
+<% layout('layout') %>
+<label>Get a MicroSerf</label>
+
+<% if(!userId){ %>
+	<form action="/users" method="GET">
+		<button type="submit" class="btn btn-primary btn-lg">Sign Up Today!</button>
+	</form>
+<% } else { %>
+	<p>SHOW TASKS</p>
+	<form action=<%= "/users/" + userId + "/tasks/new" %> method="GET">
+		<button type="submit" class="btn btn-primary btn-lg">Create Task</button>
+	</form>
+<% } %>
