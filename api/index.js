@@ -10,12 +10,14 @@ import methodOverride from 'method-override'
 
 const app = express();
 
+// temp front-end views
 app.engine('ejs', engine);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.use(methodOverride('_method'))
 
+// Required middlewares
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
 	extended: true
@@ -25,18 +27,24 @@ app.use(cookieSession({
 	name:'session',
 	keys: ['key1', 'key2']
 }))
+
+//setting port
 app.set('port', process.env.PORT || 3000);
 
 app.locals.userId = null
 
+//index page
 app.get('/', (req, res) => {
 	res.render('index', {userId: req.session.userId})
 });
 
+//other routes
 app.use('/users', users())
 app.use('/sessions', sessions())
 
-
-app.listen(app.get('port'), () => {
-	console.log("listening on port " + app.get('port'));
-});
+//sync model and listen to server after promise for sync resolves
+models.sequelize.sync().then(() => {
+	app.listen(app.get('port'), () => {
+		console.log("listening on port " + app.get('port'));
+	});
+})
