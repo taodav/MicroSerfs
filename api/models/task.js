@@ -3,6 +3,7 @@ module.exports = function(sequelize, DataTypes) {
   var Task = sequelize.define('Task', {
     name: DataTypes.STRING,
     price: DataTypes.INTEGER,
+    description: DataTypes.STRING,
     complete: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
@@ -11,7 +12,11 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         Task.belongsTo(models.User, {
-          onDelete: "CASCADE",
+          foreignKey: {
+            allowNull: false
+          }
+        })
+        Task.belongsTo(models.Serf, {
           foreignKey: {
             allowNull: false
           }
