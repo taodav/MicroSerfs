@@ -1,16 +1,24 @@
 <% layout('layout') %>
 <h3>New Task</h3>
-	<form class="form-inline" action=<%= "/users/" + userId + "/tasks" %> method="POST">
+	<form action=<%= "/users/" + userId + "/tasks" %> method="POST">
 		<div class="form-group">
-			<label for="exampleInputName2">Email</label>
-			<input type="text" class="form-control" id="exampleInputName2" placeholder="Email" name="user[email]">
+			<label for="exampleInputName2">Name</label>
+			<input type="text" class="form-control" id="exampleInputName2" placeholder="Name" name="task[name]">
 		</div>
 		<div class="form-group">
-			<label for="exampleInputEmail2">Password</label>
-			<input type="password" class="form-control" id="exampleInputEmail2" placeholder="Password" name="user[password_hash]">
+			<label for="exampleInputEmail2">Description</label>
+			<textarea class="form-control" id="exampleInputEmail2" placeholder="Enter Description Here" name="task[description]"></textarea>
+		</div>
+		<div class="form-group">
+			<label for="exampleInputEmail2">Price (In Dollars)</label>
+			<input type="number" class="form-control" id="exampleInputEmail2" placeholder="Enter Price Here" name="task[price]">
+		</div>
+		<div class="form-group">
+			<select name="task[serfId]">
+			<% serfs.map((serf) => { %>
+				<option><%= serf.first_name + " " + serf.last_name %></option>
+			<% }) %>
+			</select>
 		</div>
 		<button type="submit" class="btn btn-primary">Send invitation</button>
 	</form>
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
