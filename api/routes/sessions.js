@@ -18,7 +18,7 @@ export default () => {
 			if(user.email === email && user.password === req.body.user.password){
 				req.session.userId = user.dataValues.id
 				req.app.locals.userId = user.dataValues.id
-				res.redirect('/users/' + user.dataValues.id);	
+				res.redirect('/users/' + user.dataValues.id);
 			} else {
 				res.render('sessions/new', {error: "Incorrect username/password combination."})
 			}
