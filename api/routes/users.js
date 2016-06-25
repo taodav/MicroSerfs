@@ -3,9 +3,18 @@ import models from '../models';
 import tasks from './tasks'
 
 export default () => {
-	let app = Router()
+	let app = Router({mergeParams: true})
 
 	app.use('/:userId/tasks', tasks())
+
+	app.get('/', (req, res) => {
+		models.User.findAll({
+			attributes: ['id', 'email']
+		}).then((users) => {
+			console.log(users)
+			res.send(users)
+		})
+	})
 
 	app.get('/new', (req, res) => {
 		res.render('users/new')
