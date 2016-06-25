@@ -2,8 +2,12 @@
 <label>Get a MicroSerf</label>
 
 <% if(!userId){ %>
-	<form action="/users" method="GET">
+	<form action="/users/new" method="GET">
 		<button type="submit" class="btn btn-primary btn-lg">Sign Up Today!</button>
+	</form>
+	<p>Or:</p>
+	<form action="/serfs/new" method="GET">
+		<button type="submit" class="btn btn-primary btn-lg">Become a modern-day serf today!</button>
 	</form>
 <% } else { %>
 	<p>SHOW TASKS</p>

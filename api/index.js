@@ -1,11 +1,12 @@
 import express from 'express'
 import models from './models';
-import bodyParser from 'body-parser';
 import users from './routes/users';
+import sessions from './routes/sessions'
+import serfs from './routes/serfs'
+import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import cookieSession from 'cookie-session';
 import engine from 'ejs-mate';
-import sessions from './routes/sessions'
 import methodOverride from 'method-override'
 
 const app = express();
@@ -34,13 +35,18 @@ app.set('port', process.env.PORT || 3000);
 app.locals.userId = null
 
 //index page
-app.get('/', (req, res) => {
-	res.render('index', {userId: req.session.userId})
-});
+// app.get('/', (req, res) => {
+// 	res.render('index', {userId: req.session.userId})
+// });
+
+//react app
+app.use(express.static(__dirname + '../../app/public'))
+
 
 //other routes
 app.use('/users', users())
 app.use('/sessions', sessions())
+app.use('/serfs', serfs())
 
 //sync model and listen to server after promise for sync resolves
 models.sequelize.sync().then(() => {
