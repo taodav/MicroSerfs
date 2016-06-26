@@ -25953,7 +25953,7 @@
 
 	var _Main2 = _interopRequireDefault(_Main);
 
-	var _CreateUser = __webpack_require__(258);
+	var _CreateUser = __webpack_require__(253);
 
 	var _CreateUser2 = _interopRequireDefault(_CreateUser);
 
@@ -25961,7 +25961,7 @@
 
 	var _Home2 = _interopRequireDefault(_Home);
 
-	var _Login = __webpack_require__(261);
+	var _Login = __webpack_require__(258);
 
 	var _Login2 = _interopRequireDefault(_Login);
 
@@ -27415,119 +27415,7 @@
 
 
 /***/ },
-/* 253 */,
-/* 254 */,
-/* 255 */,
-/* 256 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _UnregisteredHome = __webpack_require__(257);
-
-	var _UnregisteredHome2 = _interopRequireDefault(_UnregisteredHome);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Home = function (_React$Component) {
-		_inherits(Home, _React$Component);
-
-		function Home() {
-			_classCallCheck(this, Home);
-
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Home).apply(this, arguments));
-		}
-
-		_createClass(Home, [{
-			key: 'render',
-			value: function render() {
-				return _react2.default.createElement(_UnregisteredHome2.default, null);
-			}
-		}]);
-
-		return Home;
-	}(_react2.default.Component);
-
-	exports.default = Home;
-
-/***/ },
-/* 257 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRouter = __webpack_require__(168);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var Home = function Home() {
-		return _react2.default.createElement(
-			'div',
-			{ className: 'starter-template' },
-			_react2.default.createElement(
-				'h1',
-				null,
-				'Jumbotron heading'
-			),
-			_react2.default.createElement(
-				'p',
-				{ className: 'lead' },
-				'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.'
-			),
-			_react2.default.createElement(
-				'p',
-				null,
-				_react2.default.createElement(
-					_reactRouter.Link,
-					{ className: 'btn btn-lg btn-success', to: '/users/new' },
-					'Sign up today'
-				)
-			),
-			_react2.default.createElement(
-				'p',
-				null,
-				'Or'
-			),
-			_react2.default.createElement(
-				'p',
-				null,
-				_react2.default.createElement(
-					_reactRouter.Link,
-					{ className: 'btn btn-lg btn-success', to: '/serfs/new' },
-					'Become a Serf today'
-				)
-			)
-		);
-	};
-
-	exports.default = Home;
-
-/***/ },
-/* 258 */
+/* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27548,11 +27436,11 @@
 
 	var _axios2 = _interopRequireDefault(_axios);
 
-	var _Alert = __webpack_require__(259);
+	var _Alert = __webpack_require__(254);
 
 	var _Alert2 = _interopRequireDefault(_Alert);
 
-	var _auth = __webpack_require__(260);
+	var _auth = __webpack_require__(255);
 
 	var _auth2 = _interopRequireDefault(_auth);
 
@@ -27690,7 +27578,7 @@
 	exports.default = (0, _reactRouter.withRouter)(CreateUser);
 
 /***/ },
-/* 259 */
+/* 254 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27752,7 +27640,7 @@
 	exports.default = Alert;
 
 /***/ },
-/* 260 */
+/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27804,7 +27692,116 @@
 	exports.default = auth;
 
 /***/ },
-/* 261 */
+/* 256 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _UnregisteredHome = __webpack_require__(257);
+
+	var _UnregisteredHome2 = _interopRequireDefault(_UnregisteredHome);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Home = function (_React$Component) {
+		_inherits(Home, _React$Component);
+
+		function Home() {
+			_classCallCheck(this, Home);
+
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(Home).apply(this, arguments));
+		}
+
+		_createClass(Home, [{
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(_UnregisteredHome2.default, null);
+			}
+		}]);
+
+		return Home;
+	}(_react2.default.Component);
+
+	exports.default = Home;
+
+/***/ },
+/* 257 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(168);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Home = function Home() {
+		return _react2.default.createElement(
+			'div',
+			{ className: 'starter-template' },
+			_react2.default.createElement(
+				'h1',
+				null,
+				'Jumbotron heading'
+			),
+			_react2.default.createElement(
+				'p',
+				{ className: 'lead' },
+				'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.'
+			),
+			_react2.default.createElement(
+				'p',
+				null,
+				_react2.default.createElement(
+					_reactRouter.Link,
+					{ className: 'btn btn-lg btn-success', to: '/users/new' },
+					'Sign up today'
+				)
+			),
+			_react2.default.createElement(
+				'p',
+				null,
+				'Or'
+			),
+			_react2.default.createElement(
+				'p',
+				null,
+				_react2.default.createElement(
+					_reactRouter.Link,
+					{ className: 'btn btn-lg btn-success', to: '/serfs/new' },
+					'Become a Serf today'
+				)
+			)
+		);
+	};
+
+	exports.default = Home;
+
+/***/ },
+/* 258 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27825,11 +27822,11 @@
 
 	var _axios2 = _interopRequireDefault(_axios);
 
-	var _auth = __webpack_require__(260);
+	var _auth = __webpack_require__(255);
 
 	var _auth2 = _interopRequireDefault(_auth);
 
-	var _Alert = __webpack_require__(259);
+	var _Alert = __webpack_require__(254);
 
 	var _Alert2 = _interopRequireDefault(_Alert);
 
