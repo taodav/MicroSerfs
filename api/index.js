@@ -40,8 +40,7 @@ app.locals.userId = null
 // });
 
 //react app
-app.use(express.static(__dirname + '../../app/public'))
-
+app.use(express.static(__dirname + '/../app/public'))
 
 //other routes
 app.use('/users', users())
