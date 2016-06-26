@@ -11,7 +11,6 @@ export default () => {
 		models.User.findAll({
 			attributes: ['id', 'email']
 		}).then((users) => {
-			console.log(users)
 			res.send(users)
 		})
 	})
@@ -32,10 +31,12 @@ export default () => {
 	})
 
 	app.post('/', (req, res) => {
-		models.User.create(req.body.user).then((user) => {
+		models.User.create(req.body).then((user) => {
 			req.session.userId = user.dataValues.id
 			req.app.locals.userId = user.dataValues.id
-			res.redirect('/');
+			req.session.save()
+			// add validations and errors
+			res.send(user);
 		})
 	})
 	return app
