@@ -24,7 +24,7 @@ export default () => {
 		models.Serf.create(req.body.serf).then((serf) => {
 			req.session.serfId = serf.dataValues.id
 			req.app.locals.serfId = serf.dataValues.id
-			res.redirect('/');
+			res.send(serf)
 		})
 	})
 	return app
