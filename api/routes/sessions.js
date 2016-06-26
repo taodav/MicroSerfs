@@ -9,19 +9,35 @@ export default () => {
 	})
 
 	app.post('/', (req, res) => {
-		var email = req.body.user.email
+		var email = req.body.email
 		models.User.find({
 			where: {
 				email: email
 			}
 		}).then((user) => {
-			if(user.email === email && user.password === req.body.user.password){
-				req.session.userId = user.dataValues.id
-				req.app.locals.userId = user.dataValues.id
-				res.redirect('/users/' + user.dataValues.id);
+
+			let token;
+			let authenticated;
+			let err;
+			console.log(user)
+			if (userExists(user) && req.body.password_hash === user.password_hash){
+				authenticated = true
+				token = Math.random().toString(36).substring(7)
 			} else {
-				res.render('sessions/new', {error: "Incorrect username/password combination."})
+				authenticated = false
+				token = null
+				if (userExists(user)) {
+					err = {type: "nil-user"}
+				} else {
+					err = {type: "incorrect-password"}
+				}
 			}
+
+			res.send({
+				authenticated,
+				token,
+				err
+			});
 		})
 	})
 
@@ -29,5 +45,10 @@ export default () => {
 		req.session.userId = null
 		res.redirect('/')
 	})
+
+	function userExists(user) {
+		return user !== null
+	}
+
 	return app
 }
