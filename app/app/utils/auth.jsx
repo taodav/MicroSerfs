@@ -7,13 +7,19 @@ let auth = {
 			return;
 		}
 		axios.post('/sessions', user).then((res) => {
-			if (res.authenticated) {
-				localStorage.token = res.token
+			if (res.data.authenticated) {
+				// localStorage.token = res.data.token
+				localStorage.id = res.data.id
+				console.log(localStorage.id)
 				callback(true)
 			} else {
-				callback(false, res.error)
+				callback(false, res.data.error)
 			}
 		})
+	},
+
+	getUser(id){
+		return axios.get('/users/' + id)
 	},
 
 	loggedIn(){
@@ -22,9 +28,10 @@ let auth = {
 
 	logout(callback){
 		axios.delete('/sessions').then((res) => {
-			if (res.err) {
+			if (res.data.err) {
 				callback(false)
 			} else {
+				localStorage.clear()
 				callback(true)
 			}
 		})
@@ -32,7 +39,7 @@ let auth = {
 
 	register(data, type, callback) {
 		axios.post('/' + type, data).then((res) => {
-			callback(true)
+			this.login(res.data, callback)
 		})
 	}
 }
