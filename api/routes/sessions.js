@@ -11,15 +11,16 @@ export default () => {
 	app.post('/', (req, res) => {
 		var email = req.body.email
 		models.User.find({
+			attributes: ['id', 'first_name', 'last_name', 'email'],
 			where: {
-				email: email
+				email
 			}
 		}).then((user) => {
-
-			let token;
-			let authenticated;
-			let err;
-			console.log(user)
+// REFACTOR THIS
+			var token;
+			var id;
+			var authenticated;
+			var err;
 			if (userExists(user) && req.body.password_hash === user.password_hash){
 				authenticated = true
 				token = Math.random().toString(36).substring(7)
@@ -32,8 +33,8 @@ export default () => {
 					err = {type: "incorrect-password"}
 				}
 			}
-
 			res.send({
+				user,
 				authenticated,
 				token,
 				err
