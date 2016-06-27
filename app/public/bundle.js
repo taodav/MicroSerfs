@@ -25953,7 +25953,7 @@
 
 	var _Main2 = _interopRequireDefault(_Main);
 
-	var _CreateUser = __webpack_require__(258);
+	var _CreateUser = __webpack_require__(253);
 
 	var _CreateUser2 = _interopRequireDefault(_CreateUser);
 
@@ -25961,7 +25961,7 @@
 
 	var _Home2 = _interopRequireDefault(_Home);
 
-	var _Login = __webpack_require__(261);
+	var _Login = __webpack_require__(259);
 
 	var _Login2 = _interopRequireDefault(_Login);
 
@@ -27415,119 +27415,7 @@
 
 
 /***/ },
-/* 253 */,
-/* 254 */,
-/* 255 */,
-/* 256 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _UnregisteredHome = __webpack_require__(257);
-
-	var _UnregisteredHome2 = _interopRequireDefault(_UnregisteredHome);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Home = function (_React$Component) {
-		_inherits(Home, _React$Component);
-
-		function Home() {
-			_classCallCheck(this, Home);
-
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Home).apply(this, arguments));
-		}
-
-		_createClass(Home, [{
-			key: 'render',
-			value: function render() {
-				return _react2.default.createElement(_UnregisteredHome2.default, null);
-			}
-		}]);
-
-		return Home;
-	}(_react2.default.Component);
-
-	exports.default = Home;
-
-/***/ },
-/* 257 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRouter = __webpack_require__(168);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var Home = function Home() {
-		return _react2.default.createElement(
-			'div',
-			{ className: 'starter-template' },
-			_react2.default.createElement(
-				'h1',
-				null,
-				'Jumbotron heading'
-			),
-			_react2.default.createElement(
-				'p',
-				{ className: 'lead' },
-				'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.'
-			),
-			_react2.default.createElement(
-				'p',
-				null,
-				_react2.default.createElement(
-					_reactRouter.Link,
-					{ className: 'btn btn-lg btn-success', to: '/users/new' },
-					'Sign up today'
-				)
-			),
-			_react2.default.createElement(
-				'p',
-				null,
-				'Or'
-			),
-			_react2.default.createElement(
-				'p',
-				null,
-				_react2.default.createElement(
-					_reactRouter.Link,
-					{ className: 'btn btn-lg btn-success', to: '/serfs/new' },
-					'Become a Serf today'
-				)
-			)
-		);
-	};
-
-	exports.default = Home;
-
-/***/ },
-/* 258 */
+/* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27548,11 +27436,11 @@
 
 	var _axios2 = _interopRequireDefault(_axios);
 
-	var _Alert = __webpack_require__(259);
+	var _Alert = __webpack_require__(254);
 
 	var _Alert2 = _interopRequireDefault(_Alert);
 
-	var _auth = __webpack_require__(260);
+	var _auth = __webpack_require__(255);
 
 	var _auth2 = _interopRequireDefault(_auth);
 
@@ -27603,7 +27491,7 @@
 					password_hash: this.refs.password.value
 				};
 				_auth2.default.register(data, this.props.myType, function (res) {
-					if (res.err !== null) {
+					if (res.data.err !== null) {
 						_reactRouter.hashHistory.push('/');
 					} else {
 						_this2.setState({
@@ -27690,7 +27578,7 @@
 	exports.default = (0, _reactRouter.withRouter)(CreateUser);
 
 /***/ },
-/* 259 */
+/* 254 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27752,7 +27640,7 @@
 	exports.default = Alert;
 
 /***/ },
-/* 260 */
+/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27774,29 +27662,37 @@
 				return;
 			}
 			_axios2.default.post('/sessions', user).then(function (res) {
-				if (res.authenticated) {
-					localStorage.token = res.token;
+				if (res.data.authenticated) {
+					// localStorage.token = res.data.token
+					localStorage.id = res.data.id;
+					console.log(localStorage.id);
 					callback(true);
 				} else {
-					callback(false, res.error);
+					callback(false, res.data.error);
 				}
 			});
+		},
+		getUser: function getUser(id) {
+			return _axios2.default.get('/users/' + id);
 		},
 		loggedIn: function loggedIn() {
 			return !!localStorage.token;
 		},
 		logout: function logout(callback) {
 			_axios2.default.delete('/sessions').then(function (res) {
-				if (res.err) {
+				if (res.data.err) {
 					callback(false);
 				} else {
+					localStorage.clear();
 					callback(true);
 				}
 			});
 		},
 		register: function register(data, type, callback) {
+			var _this = this;
+
 			_axios2.default.post('/' + type, data).then(function (res) {
-				callback(true);
+				_this.login(res.data, callback);
 			});
 		}
 	};
@@ -27804,7 +27700,219 @@
 	exports.default = auth;
 
 /***/ },
-/* 261 */
+/* 256 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _UnregisteredHome = __webpack_require__(257);
+
+	var _UnregisteredHome2 = _interopRequireDefault(_UnregisteredHome);
+
+	var _RegisteredUserHome = __webpack_require__(258);
+
+	var _RegisteredUserHome2 = _interopRequireDefault(_RegisteredUserHome);
+
+	var _auth = __webpack_require__(255);
+
+	var _auth2 = _interopRequireDefault(_auth);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Home = function (_React$Component) {
+		_inherits(Home, _React$Component);
+
+		function Home() {
+			_classCallCheck(this, Home);
+
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Home).call(this));
+
+			_this.state = {
+				user: null
+			};
+			return _this;
+		}
+
+		_createClass(Home, [{
+			key: 'componentWillMount',
+			value: function componentWillMount() {
+				var _this2 = this;
+
+				if (_auth2.default.loggedIn()) {
+					_auth2.default.getUser(localStorage.id).then(function (res) {
+						_this2.setState({ user: res.data.user });
+					});
+				}
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				if (_auth2.default.loggedIn()) {
+					return _react2.default.createElement(_RegisteredUserHome2.default, { user: this.user });
+				} else {
+					return _react2.default.createElement(_UnregisteredHome2.default, null);
+				}
+			}
+		}]);
+
+		return Home;
+	}(_react2.default.Component);
+
+	exports.default = Home;
+
+/***/ },
+/* 257 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(168);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Home = function Home() {
+		return _react2.default.createElement(
+			'div',
+			{ className: 'starter-template' },
+			_react2.default.createElement(
+				'h1',
+				null,
+				'Jumbotron heading'
+			),
+			_react2.default.createElement(
+				'p',
+				{ className: 'lead' },
+				'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.'
+			),
+			_react2.default.createElement(
+				'p',
+				null,
+				_react2.default.createElement(
+					_reactRouter.Link,
+					{ className: 'btn btn-lg btn-success', to: '/users/new' },
+					'Sign up today'
+				)
+			),
+			_react2.default.createElement(
+				'p',
+				null,
+				'Or'
+			),
+			_react2.default.createElement(
+				'p',
+				null,
+				_react2.default.createElement(
+					_reactRouter.Link,
+					{ className: 'btn btn-lg btn-success', to: '/serfs/new' },
+					'Become a Serf today'
+				)
+			)
+		);
+	};
+
+	exports.default = Home;
+
+/***/ },
+/* 258 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(168);
+
+	var _auth = __webpack_require__(255);
+
+	var _auth2 = _interopRequireDefault(_auth);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var RegisteredUserHome = function (_React$Component) {
+		_inherits(RegisteredUserHome, _React$Component);
+
+		function RegisteredUserHome() {
+			_classCallCheck(this, RegisteredUserHome);
+
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(RegisteredUserHome).apply(this, arguments));
+		}
+
+		_createClass(RegisteredUserHome, [{
+			key: 'componentWillMount',
+			value: function componentWillMount() {
+				var _this2 = this;
+
+				_auth2.default.getUser(localStorage.id).then(function (res) {
+					console.log(res.data);
+					_this2.user = res.data.user;
+				});
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(
+					'div',
+					{ className: 'starter-template' },
+					_react2.default.createElement(
+						'h1',
+						null,
+						'Welcome Back, ',
+						this.user.first_name
+					),
+					_react2.default.createElement(
+						'p',
+						{ className: 'lead' },
+						'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.'
+					)
+				);
+			}
+		}]);
+
+		return RegisteredUserHome;
+	}(_react2.default.Component);
+
+	exports.default = RegisteredUserHome;
+
+/***/ },
+/* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27825,11 +27933,11 @@
 
 	var _axios2 = _interopRequireDefault(_axios);
 
-	var _auth = __webpack_require__(260);
+	var _auth = __webpack_require__(255);
 
 	var _auth2 = _interopRequireDefault(_auth);
 
-	var _Alert = __webpack_require__(259);
+	var _Alert = __webpack_require__(254);
 
 	var _Alert2 = _interopRequireDefault(_Alert);
 
@@ -27861,6 +27969,7 @@
 			value: function handleClick(e) {
 				var _this2 = this;
 
+				console.log(e);
 				var data = {
 					email: this.refs.email.value,
 					password_hash: this.refs.password.value
@@ -27869,7 +27978,6 @@
 					if (auth === true) {
 						_reactRouter.hashHistory.push('/');
 					} else {
-						console.log(err);
 						_this2.setState({
 							err: err,
 							active: true
@@ -27912,7 +28020,12 @@
 					_react2.default.createElement(
 						'button',
 						{ onClick: this.handleClick.bind(this), className: 'btn btn-primary' },
-						'Login'
+						'Login As A User'
+					),
+					_react2.default.createElement(
+						'button',
+						{ onClick: this.handleClick.bind(this), className: 'btn btn-primary' },
+						'Login As A Serf'
 					)
 				);
 			}
