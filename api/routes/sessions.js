@@ -11,7 +11,6 @@ export default () => {
 	app.post('/', (req, res) => {
 		var email = req.body.email
 		models.User.find({
-			attributes: ['id', 'first_name', 'last_name', 'email'],
 			where: {
 				email
 			}
@@ -21,6 +20,7 @@ export default () => {
 			var id;
 			var authenticated;
 			var err;
+			console.log(user)
 			if (userExists(user) && req.body.password_hash === user.password_hash){
 				authenticated = true
 				token = Math.random().toString(36).substring(7)
