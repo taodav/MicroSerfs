@@ -27490,13 +27490,13 @@
 					email: this.refs.email.value,
 					password_hash: this.refs.password.value
 				};
-				_auth2.default.register(data, this.props.myType, function (res) {
-					if (res.data.err !== null) {
+				_auth2.default.register(data, this.props.myType, function (auth, err) {
+					if (auth) {
 						_reactRouter.hashHistory.push('/');
 					} else {
 						_this2.setState({
 							active: true,
-							err: res.err
+							err: err
 						});
 					}
 				});
@@ -27663,17 +27663,18 @@
 			}
 			_axios2.default.post('/sessions', user).then(function (res) {
 				if (res.data.authenticated) {
-					// localStorage.token = res.data.token
-					localStorage.id = res.data.id;
-					console.log(localStorage.id);
-					callback(true);
+					localStorage.token = res.data.token;
+					localStorage.id = res.data.user.id;
+					if (callback) callback(true);
 				} else {
 					callback(false, res.data.error);
 				}
 			});
 		},
-		getUser: function getUser(id) {
-			return _axios2.default.get('/users/' + id);
+		getUser: function getUser(id, callback) {
+			_axios2.default.get('/users/' + id).then(function (res) {
+				callback(res.data);
+			});
 		},
 		loggedIn: function loggedIn() {
 			return !!localStorage.token;
@@ -27692,7 +27693,7 @@
 			var _this = this;
 
 			_axios2.default.post('/' + type, data).then(function (res) {
-				_this.login(res.data, callback);
+				_this.login(res.data.user, callback);
 			});
 		}
 	};
@@ -27744,7 +27745,11 @@
 			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Home).call(this));
 
 			_this.state = {
-				user: null
+				user: {
+					first_name: "",
+					last_name: "",
+					email: ""
+				}
 			};
 			return _this;
 		}
@@ -27755,8 +27760,8 @@
 				var _this2 = this;
 
 				if (_auth2.default.loggedIn()) {
-					_auth2.default.getUser(localStorage.id).then(function (res) {
-						_this2.setState({ user: res.data.user });
+					_auth2.default.getUser(localStorage.id, function (user) {
+						_this2.setState({ user: user });
 					});
 				}
 			}
@@ -27764,7 +27769,7 @@
 			key: 'render',
 			value: function render() {
 				if (_auth2.default.loggedIn()) {
-					return _react2.default.createElement(_RegisteredUserHome2.default, { user: this.user });
+					return _react2.default.createElement(_RegisteredUserHome2.default, { user: this.state.user });
 				} else {
 					return _react2.default.createElement(_UnregisteredHome2.default, null);
 				}
@@ -27876,17 +27881,13 @@
 		}
 
 		_createClass(RegisteredUserHome, [{
-			key: 'componentWillMount',
-			value: function componentWillMount() {
-				var _this2 = this;
-
-				_auth2.default.getUser(localStorage.id).then(function (res) {
-					console.log(res.data);
-					_this2.user = res.data.user;
-				});
-			}
-		}, {
 			key: 'render',
+
+			// componentWillMount() {
+			// 	auth.getUser(localStorage.id).then((res) => {
+			// 		this.user = res.data.user
+			// 	})
+			// }
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
@@ -27895,7 +27896,7 @@
 						'h1',
 						null,
 						'Welcome Back, ',
-						this.user.first_name
+						this.props.user.first_name
 					),
 					_react2.default.createElement(
 						'p',
@@ -27969,7 +27970,6 @@
 			value: function handleClick(e) {
 				var _this2 = this;
 
-				console.log(e);
 				var data = {
 					email: this.refs.email.value,
 					password_hash: this.refs.password.value
@@ -28022,6 +28022,8 @@
 						{ onClick: this.handleClick.bind(this), className: 'btn btn-primary' },
 						'Login As A User'
 					),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement('br', null),
 					_react2.default.createElement(
 						'button',
 						{ onClick: this.handleClick.bind(this), className: 'btn btn-primary' },
