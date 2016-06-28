@@ -7,10 +7,8 @@ export default () => {
 
 	app.use('/:userId/tasks', tasks())
 
-	app.get('/', (req, res) => {
-		models.User.findAll({
-			attributes: ['id', 'email']
-		}).then((users) => {
+	app.get('/:id', (req, res) => {
+		models.User.find(req.params.id).then((users) => {
 			res.send(users)
 		})
 	})
