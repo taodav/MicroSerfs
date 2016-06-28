@@ -43,7 +43,7 @@ class Login extends React.Component {
 					<label for="exampleInputEmail2">Password</label>
 					<input type="password" className="form-control" ref="password" placeholder="Password" name="user[password_hash]" />
 				</div>
-				<button onClick={this.handleClick.bind(this)} className="btn btn-primary">Login As A User</button>
+				<button onClick={this.handleClick.bind(this)} className="btn btn-primary">Login As A User</button><br /><br />
 				<button onClick={this.handleClick.bind(this)} className="btn btn-primary">Login As A Serf</button>
 			</div>
 		)
