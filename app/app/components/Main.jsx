@@ -1,5 +1,5 @@
 import React from 'react'
-import Nav from './Nav.jsx';
+import Nav from './navbar/Nav.jsx';
 import helpers from '../utils/helpers.jsx'
 
 export default class Main extends React.Component {
