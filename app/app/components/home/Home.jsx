@@ -7,20 +7,24 @@ export default class Home extends React.Component {
 	constructor(){
 		super();
 		this.state = {
-			user: null
+			user: {
+				first_name: "",
+				last_name: "",
+				email: ""
+			}
 		}
 	}
 	componentWillMount(){
 		if (auth.loggedIn()){
-			auth.getUser(localStorage.id).then((res) => {
-				this.setState({user: res.data.user})
+			auth.getUser(localStorage.id, (user) => {
+				this.setState({user})
 			})
 		}
 	}
 	render(){
 		if (auth.loggedIn()){
 			return (
-				<RegisteredUserHome user={this.user} />
+				<RegisteredUserHome user={this.state.user} />
 			)
 		} else {
 			return (
