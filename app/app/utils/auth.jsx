@@ -27,15 +27,9 @@ let auth = {
 		return !!localStorage.token
 	},
 
-	logout(callback){
-		axios.delete('/sessions').then((res) => {
-			if (res.data.err) {
-				callback(false)
-			} else {
-				localStorage.clear()
-				callback(true)
-			}
-		})
+	logout(){
+		console.log('Logged Out')
+		localStorage.clear()
 	},
 
 	register(data, type, callback) {
