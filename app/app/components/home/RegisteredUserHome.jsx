@@ -12,7 +12,8 @@ export default class RegisteredUserHome extends React.Component {
 		return(
 			<div className="starter-template">
 				<h1>Welcome Back, {this.props.user.first_name}</h1>
-		        <p className="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+		        <p className="lead">Get something done today.</p>
+		        <Link to="/task/new" className="btn btn-primary">Create A Task</Link>
 	        </div>
 		)
 	}
