@@ -13,7 +13,6 @@ class Login extends React.Component {
 		}
 	}
 	handleClick(e){
-		console.log(e)
 		let data = {
 			email: this.refs.email.value,
 			password_hash: this.refs.password.value
