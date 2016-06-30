@@ -11,15 +11,20 @@ const CreateSerfWrapper = () => <CreateUser myType={"serfs"} />
 
 
 const routes = () =>
-		<Route path="/" component={Main}>
-			<Route path="users/new" component={CreateUserWrapper} />
-			<Route path="users/:id">
-				<Route path="/tasks/new" component={CreateTask} />
-			</Route>
-			<Route path="serfs/new" component={CreateSerfWrapper} />
-			<Route path="sessions/new" component={Login} />
-			<IndexRoute component={Home} />
-		</Route>
+	<Route path="/" component={Main}>
+		// New User
+		<Route path="users/new" component={CreateUserWrapper} />
+
+		// New Task
+		<Route path="users/:id/tasks/new" component={CreateTask} />
+
+		// New Serf
+		<Route path="serfs/new" component={CreateSerfWrapper} />
+
+		// login
+		<Route path="sessions/new" component={Login} />
+		<IndexRoute component={Home} />
+	</Route>
 
 
 export default routes()
