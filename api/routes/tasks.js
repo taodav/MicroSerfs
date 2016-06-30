@@ -18,7 +18,6 @@ export default () => {
 	})
 	app.post('/', (req, res) => {
 		// models.Task.create(req.body.task).then((task) => {
-			console.log(req.params)
 			models.User.find(req.params.userId).then((user) => {
 				console.log(user)
 				user.createTask(req.body).then((task) => {
