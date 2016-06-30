@@ -21,7 +21,7 @@ export default () => {
 	})
 
 	app.post('/', (req, res) => {
-		models.Serf.create(req.body.serf).then((serf) => {
+		models.Serf.create(req.body).then((serf) => {
 			req.session.serfId = serf.dataValues.id
 			req.app.locals.serfId = serf.dataValues.id
 			res.send(serf)
