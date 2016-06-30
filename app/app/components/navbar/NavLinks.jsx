@@ -8,27 +8,25 @@ export default class NavLinks extends React.Component {
 		e.target.className = 'active';
 	}
 	render(){
-		return (
-			<div>
-				<li onClick={this.handleClick.bind(this)}><Link to="/">Home</Link></li>
-				{if (auth.loggedIn()){}
-					<LoggedIn handleClick={this.handleClick} />
-				{}} else {}
-					<NotLoggedIn handleClick={this.handleClick} />
-				{}}
-			</div>
-		)
+		if (auth.loggedIn()){
+			return <LoggedIn handleClick={this.handleClick} />
+		} else {
+			return <NotLoggedIn handleClick={this.handleClick} />
+		}
 	}
-}
+}						
+
+						
 
 class NotLoggedIn extends React.Component { 
 	render(){
 		return(
-			<div>
+			<ul className="nav navbar-nav">
+				<li onClick={this.props.handleClick}><Link to="/">Home</Link></li>
 				<li onClick={this.props.handleClick}><Link to="/users/new">Sign Up</Link></li>
 				<li onClick={this.props.handleClick}><Link to="/serfs/new">Become A Serf</Link></li>
 				<li onClick={this.props.handleClick}><Link to="/sessions/new">Log In</Link></li>
-			</div>
+			</ul>
 		)
 	}
 }
@@ -37,11 +35,12 @@ class NotLoggedIn extends React.Component {
 class LoggedIn extends React.Component {
 	render(){
 		return(
-			<div>
-				<li onClick={auth.logout()}><Link to="/">
+			<ul className="nav navbar-nav">
+				<li onClick={this.handleClick}><Link to="/">Home</Link></li>
+				<li onClick={auth.logout}><Link to="/">
 					Log Out</Link>
 				</li>
-			</div>
+			</ul>
 		)
 	}
 } 
