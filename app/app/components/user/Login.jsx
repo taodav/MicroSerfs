@@ -16,8 +16,15 @@ class Login extends React.Component {
 		let data = {
 			email: this.refs.email.value,
 			password_hash: this.refs.password.value
+		};
+		let button = e.target.innerHTML;
+		let type;
+		if (button.includes('User')){
+			type = 'users'
+		} else {
+			type = 'serfs'
 		}
-		auth.login(data, (auth, err) => {
+		auth.login(data, type, (auth, err) => {
 			if (auth === true) {
 				hashHistory.push('/')
 			} else {
