@@ -18,9 +18,7 @@ export default class Nav extends React.Component {
 						<Link to="/" className="navbar-brand">MicroSerfs</Link>
 					</div>
 					<div id="navbar" className="collapse navbar-collapse">
-						<ul className="nav navbar-nav">
-							<NavLinks />
-						</ul>
+						<NavLinks />
 					</div>
 				</div>
 			</nav>
