@@ -1,23 +1,24 @@
 import axios from 'axios'
 
 let auth = {
-	login(user, callback){
+	login(user, type, callback){
 		if (this.loggedIn()){
 			callback(true);
 			return;
 		}
-		axios.post('/sessions', user).then((res) => {
+		axios.post('/sessions/' + type, user).then((res) => {
 			if (res.data.authenticated) {
 				localStorage.token = res.data.token
 				localStorage.id = res.data.user.id
-				if (callback) callback(true);
+				localStorage.type = type
+				callback(true);
 			} else {
 				callback(false, res.data.error)
 			}
 		})
 	},
 
-	getUser(id, callback){
+	getUser(id, type, callback){
 		axios.get('/users/' + id).then((res) => {
 			callback(res.data)
 		})
@@ -34,7 +35,7 @@ let auth = {
 
 	register(data, type, callback) {
 		axios.post('/' + type, data).then((res) => {
-			this.login(res.data.user, callback)
+			this.login(res.data, type, callback)
 		})
 	}
 }
