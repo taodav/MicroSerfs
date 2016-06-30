@@ -30,13 +30,13 @@ class CreateUser extends React.Component {
 			email: this.refs.email.value,
 			password_hash: this.refs.password.value
 		}
-		auth.register(data, this.props.myType, (res) => {
-			if (res.data.err !== null) {
+		auth.register(data, this.props.myType, (auth, err) => {
+			if (auth) {
 				hashHistory.push('/')
 			} else {
 				this.setState({
 					active: true,
-					err: res.err
+					err
 				})
 			}
 		})

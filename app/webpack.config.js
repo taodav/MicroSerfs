@@ -1,4 +1,14 @@
+require('dotenv').config()
+var webpack = require('webpack')
+
 module.exports = {
+	plugins: [
+		new webpack.DefinePlugin({
+			'process.env': {
+				'GOOGLE_MAPS_API_KEY': JSON.stringify(process.env.GOOGLE_MAPS_API_KEY)
+			}
+		})
+	],
 	entry: "./app/App.jsx",
 	output: {
 		filename: "public/bundle.js"

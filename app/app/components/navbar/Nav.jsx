@@ -1,11 +1,9 @@
 import React from 'react';
-import {Link} from 'react-router'
+import {Link, hashHistory} from 'react-router'
+import NavLinks from './NavLinks.jsx'
 
 export default class Nav extends React.Component {
-	handleClick(e){
-		$('.active').removeClass('active')
-		e.target.className = 'active';
-	}
+	
 	render(){
 		return (
 			<nav className="navbar navbar-inverse">
@@ -20,12 +18,7 @@ export default class Nav extends React.Component {
 						<Link to="/" className="navbar-brand">MicroSerfs</Link>
 					</div>
 					<div id="navbar" className="collapse navbar-collapse">
-						<ul className="nav navbar-nav">
-							<li onClick={this.handleClick.bind(this)}><Link to="/">Home</Link></li>
-							<li onClick={this.handleClick.bind(this)}><Link to="/users/new">Sign Up</Link></li>
-							<li onClick={this.handleClick.bind(this)}><Link to="/serfs/new">Become A Serf</Link></li>
-							<li onClick={this.handleClick.bind(this)}><Link to="/sessions/new">Log In</Link></li>
-						</ul>
+						<NavLinks />
 					</div>
 				</div>
 			</nav>

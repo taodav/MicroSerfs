@@ -8,15 +8,9 @@ export default () => {
 		res.render('sessions/new')
 	})
 
-	app.post('/', (req, res) => {
+	app.post('/:type', (req, res) => {
 		var email = req.body.email
-		models.User.find({
-			attributes: ['id', 'first_name', 'last_name', 'email'],
-			where: {
-				email
-			}
-		}).then((user) => {
-// REFACTOR THIS
+		findUser(email, req.params.type).then((user) => {
 			var token;
 			var id;
 			var authenticated;
@@ -39,6 +33,8 @@ export default () => {
 				token,
 				err
 			});
+		}).catch((err) => {
+			console.log("no user found")
 		})
 	})
 
@@ -46,6 +42,22 @@ export default () => {
 		req.session.userId = null
 		res.redirect('/')
 	})
+
+	function findUser(email, type){
+		if (type === "serfs") {
+			return models.Serf.find({
+				where: {
+					email
+				}
+			})
+		} else {
+			return models.User.find({
+				where: {
+					email
+				}
+			})
+		}
+	}
 
 	function userExists(user) {
 		return user !== null

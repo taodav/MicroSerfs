@@ -13,12 +13,18 @@ class Login extends React.Component {
 		}
 	}
 	handleClick(e){
-		console.log(e)
 		let data = {
 			email: this.refs.email.value,
 			password_hash: this.refs.password.value
+		};
+		let button = e.target.innerHTML;
+		let type;
+		if (button.includes('User')){
+			type = 'users'
+		} else {
+			type = 'serfs'
 		}
-		auth.login(data, (auth, err) => {
+		auth.login(data, type, (auth, err) => {
 			if (auth === true) {
 				hashHistory.push('/')
 			} else {
@@ -43,7 +49,7 @@ class Login extends React.Component {
 					<label for="exampleInputEmail2">Password</label>
 					<input type="password" className="form-control" ref="password" placeholder="Password" name="user[password_hash]" />
 				</div>
-				<button onClick={this.handleClick.bind(this)} className="btn btn-primary">Login As A User</button>
+				<button onClick={this.handleClick.bind(this)} className="btn btn-primary">Login As A User</button><br /><br />
 				<button onClick={this.handleClick.bind(this)} className="btn btn-primary">Login As A Serf</button>
 			</div>
 		)
