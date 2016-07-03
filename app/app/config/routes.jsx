@@ -18,8 +18,9 @@ const routes = () =>
 		<Route path="users/new" component={CreateUserWrapper} />
 
 		// New Task
-		<Route path="users/:id/tasks/new" component={CreateTask}>
-			<Route path="/search" component={SearchSerf}>
+
+		<Route path="tasks" component={CreateTask}>
+			<Route path="/search" component={SearchSerf} />
 			<IndexRoute component={TaskForm} />
 		</Route>
 
