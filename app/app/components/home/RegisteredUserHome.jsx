@@ -9,7 +9,7 @@ export default class RegisteredUserHome extends React.Component {
 			<div className="starter-template">
 				<h1>Welcome Back, {this.props.user.first_name}</h1>
 		        <p className="lead">Get something done today.</p>
-		        <Link to={"/users/" + this.props.user.id + "/tasks/new"} className="btn btn-primary">Create A Task</Link>
+		        <Link to={"/tasks"} className="btn btn-primary">Create A Task</Link>
 	        </div>
 		)
 	}
