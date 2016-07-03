@@ -1,4 +1,5 @@
 import React from 'react'
+import {hashHistory, Link} from 'react-router'
 
 export default class TaskForm extends React.Component {
 	handleClick(){
@@ -7,9 +8,9 @@ export default class TaskForm extends React.Component {
 			price: this.refs.price.value,
 			description: this.refs.description.value
 		}
-		axios.post('users/' + this.props.params.id + '/tasks', data).then(() => {
-			hashHistory.push('/users/' + this.props.params.id + '/tasks/new/search')
-		})
+		// axios.post('users/' + this.props.params.id + '/tasks', data).then(() => {
+			hashHistory.push('/search')
+		// })
 	}
 	render(){
 		return (
