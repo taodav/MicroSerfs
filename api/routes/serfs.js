@@ -13,10 +13,12 @@ export default () => {
 		models.Serf.find({
 			where: {
 				id: req.params.id
-			},
-			include: [models.Task]	
+			}
+			// ,
+			// include: [models.Task]	
 		}).then((serf) => {
-			res.render('serfs/show', {serf})
+			console.log(serf)
+			res.send(serf)
 		})
 	})
 
