@@ -18,12 +18,13 @@ export default class Home extends React.Component {
 	componentWillMount(){
 		if (auth.loggedIn()){
 			auth.getUser(localStorage.id, localStorage.type, (user) => {
+				console.log(user)
 				this.setState({user})
 			})
 		}
 	}
 	render(){
-		if (auth.loggedIn() && localStorage.type == "users"){
+		if (auth.loggedIn() && localStorage.type === "users"){
 			return (
 				<RegisteredUserHome user={this.state.user} />
 			)
