@@ -19,7 +19,7 @@ let auth = {
 	},
 
 	getUser(id, type, callback){
-		axios.get('/users/' + id).then((res) => {
+		axios.get('/' + type + '/' + id).then((res) => {
 			callback(res.data)
 		})
 	},
